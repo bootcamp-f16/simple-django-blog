@@ -1,0 +1,46 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+    {{block.super}} - Home
+{% endblock title %}
+
+{% block content %}
+    <h1>Recent Posts</h1>
+    <ul class="list-group">
+        {% for post in posts %}
+            <li class="list-group-item">
+                <div class="pull-right">{{post.published_date|date:"m.d.Y"}}</div>
+                <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <nav aria-label="Page navigation" class="posts-pagination">
+        <ul class="pagination pagination-lg">
+            {% if posts.has_previous %}
+                <li>
+                    <a href="?page={{ posts.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+            {% for page in posts.paginator.page_range %}
+                <li
+                    {% if posts.number == page %}
+                        class="active"
+                    {% endif %}
+                >
+                    <a href="?page={{ page }}">
+                        {{ page }}
+                    </a>
+                </li>
+            {% endfor %}
+            {% if posts.has_next %}
+                <li>
+                    <a href="?page={{ posts.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+      </ul>
+    </nav>
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+    {{ block.super }}
+    - Test
+{% endblock title %}
+
+{% block content %}
+    <h1>
+        {{post.title}} <small>published: {{post.published_date|date:"m.d.Y"}}</small>
+    </h1>
+    <pre>
+{{post.content}}
+    </pre>
+
+{% endblock content %}

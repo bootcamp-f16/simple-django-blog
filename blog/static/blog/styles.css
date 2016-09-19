@@ -1,0 +1,15 @@
+body{
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.page-footer {
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+    width: 100%;
+}
+
+.posts-pagination {
+    text-align: center;
+}
